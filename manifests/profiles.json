@@ -1,0 +1,14 @@
+{
+  "core": ["superpowers", "ponytail", "caveman", "rtk", "agent-security-skills"],
+  "quality": ["mattpocock-skills", "testing-best-practices"],
+  "context": ["planning-with-files", "graphify", "context7"],
+  "integrations": ["ai-skills-24"],
+  "engineering": ["addy-agent-skills"],
+  "frontend": ["vercel-react-best-practices", "ui-ux-pro-max", "design-taste-frontend", "21st-dev"],
+  "browser": ["agent-browser"],
+  "media": ["hyperframes"],
+  "discovery": ["find-skills"],
+  "security": ["agent-security-skills", "strix"],
+  "experimental": ["token-optimizer", "gstack", "ecc"]
+}
+

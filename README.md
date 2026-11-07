@@ -28,6 +28,7 @@ Um agente de código precisa de método, contexto curto, documentação atual e 
 | `observability` | Analytics, flags, experimentos e skills via PostHog MCP |
 | `security` | Auditoria de skills e pentest autorizado com Strix |
 | `experimental` | Token Optimizer, GStack e ECC; revisar antes |
+| `unified` | Roteamento completo; skills carregadas sob demanda |
 
 ## Instalação
 
@@ -39,6 +40,18 @@ pwsh ./scripts/install-profile.ps1 -Profile core -WhatIf
 ```
 
 O script não executa instaladores remotos. Isso mantém a revisão explícita. Skills e hooks de terceiros podem executar comandos com os privilégios do agente; leia [docs/pt-br/security.md](docs/pt-br/security.md) antes de instalar.
+
+### Instalação global para Claude e Codex
+
+O guia completo, em português, explica os comandos para instalar nos dois diretórios globais, ativar RTK, configurar MCPs e verificar o resultado: [docs/pt-br/instalacao-global.md](docs/pt-br/instalacao-global.md).
+
+Comando-base:
+
+```powershell
+npx -y skills@latest add obra/superpowers -a claude-code -a codex -g --copy -y
+```
+
+Repita o padrão para os pacotes desejados. `-g` significa global; `-a` escolhe os agentes; `--copy` evita depender de links do cache.
 
 ### Paralelização
 
@@ -57,6 +70,8 @@ Use `orchestration` quando houver tarefas independentes. Cada agente recebe esco
 - Strix executa pentest ativo: use somente em alvos próprios ou autorizados por escrito.
 
 Os quatro repositórios novos ficam referenciados no manifesto; seus monorepos não são copiados para este catálogo para evitar duplicação, bloat e conflitos de licença.
+
+Para entender o que foi instalado, qual agente atende cada etapa e como os componentes trabalham juntos, consulte [docs/pt-br/unified-stack.md](docs/pt-br/unified-stack.md) e [manifests/stack.json](manifests/stack.json).
 
 Menos tokens de saída não garantem menor custo total. Verifique qualidade, chamadas adicionais e taxa de retrabalho.
 

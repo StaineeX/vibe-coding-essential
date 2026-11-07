@@ -12,6 +12,7 @@
   "web": ["firecrawl"],
   "observability": ["posthog"],
   "security": ["agent-security-skills", "strix"],
-  "experimental": ["token-optimizer", "gstack", "ecc"]
+  "experimental": ["token-optimizer", "gstack", "ecc"],
+  "unified": ["superpowers", "parallel-orchestration", "cavecrew", "ponytail", "caveman", "rtk", "agent-security-skills", "mattpocock-skills", "testing-best-practices", "planning-with-files", "graphify", "context7", "ai-skills-24", "composio", "addy-agent-skills", "vercel-react-best-practices", "ui-ux-pro-max", "design-taste-frontend", "21st-dev", "agent-browser", "playwright", "hyperframes", "find-skills", "firecrawl", "posthog", "strix", "token-optimizer", "gstack", "ecc"]
 }
 

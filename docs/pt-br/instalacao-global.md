@@ -1,0 +1,166 @@
+# Instalação global — Claude Code + OpenAI Codex
+
+Este guia instala as skills nos diretórios globais dos dois agentes e deixa os MCPs opcionais separados. O catálogo não copia os monorepos inteiros: instala apenas as skills necessárias e referencia os servidores oficiais.
+
+## 1. Pré-requisitos
+
+Abra o PowerShell e confirme:
+
+```powershell
+node --version       # Node.js 20+
+npm --version
+git --version
+```
+
+Para os recursos opcionais:
+
+- Docker: Firecrawl local e Strix.
+- Chrome/Chromium: Playwright e agent-browser.
+- `uv`: Strix.
+- Conta/API key: Firecrawl, PostHog, Composio e 21st.dev.
+
+O diretório global do Codex é `$HOME\.agents\skills`; o do Claude Code é `$HOME\.claude\skills`. O instalador abaixo grava nos dois com `-a claude-code -a codex -g`.
+
+## 2. Instalar a base global
+
+Execute em um terminal novo:
+
+```powershell
+npx -y skills@latest add obra/superpowers -a claude-code -a codex -g --copy -y
+npx -y skills@latest add DietrichGebert/ponytail -a claude-code -a codex -g --copy -y
+npx -y skills@latest add JuliusBrussee/caveman -a claude-code -a codex -g --copy -y
+npx -y skills@latest add howardhsieh/agent-security-skills -a claude-code -a codex -g --copy -y
+npx -y skills@latest add adewale/testing-best-practices -a claude-code -a codex -g --copy -y
+npx -y skills@latest add OthmanAdi/planning-with-files -a claude-code -a codex -g --copy -y
+npx -y skills@latest add Graphify-Labs/graphify -a claude-code -a codex -g --copy -y
+```
+
+`--copy` deixa uma cópia independente em cada diretório do agente. Sem essa opção, alguns instaladores podem criar links para o cache local.
+
+## 3. Instalar a camada de trabalho paralelo
+
+Use `dispatching-parallel-agents` para tarefas independentes, `using-git-worktrees` para isolamento e `subagent-driven-development` para coordenar a integração:
+
+```powershell
+npx -y skills@latest add obra/superpowers `
+  --skill dispatching-parallel-agents `
+  --skill subagent-driven-development `
+  --skill using-git-worktrees `
+  -a claude-code -a codex -g --copy -y
+
+npx -y skills@latest add JuliusBrussee/caveman `
+  --skill cavecrew `
+  -a claude-code -a codex -g --copy -y
+```
+
+Regra: agentes podem trabalhar em paralelo somente quando não editam os mesmos arquivos e não dependem da saída uns dos outros. Integração, revisão e verificação final são sequenciais.
+
+## 4. Instalar qualidade, frontend e navegador
+
+```powershell
+npx -y skills@latest add mattpocock/skills -a claude-code -a codex -g --copy -y
+npx -y skills@latest add addyosmani/agent-skills -a claude-code -a codex -g --copy -y
+npx -y skills@latest add vercel-labs/agent-skills -a claude-code -a codex -g --copy -y
+npx -y skills@latest add nextlevelbuilder/ui-ux-pro-max-skill -a claude-code -a codex -g --copy -y
+npx -y skills@latest add Leonxlnx/taste-skill --skill design-taste-frontend -a claude-code -a codex -g --copy -y
+npx -y skills@latest add 21st-dev/skill --all -a claude-code -a codex -g --copy -y
+npx -y skills@latest add vercel-labs/agent-browser -a claude-code -a codex -g --copy -y
+npm install --global agent-browser @playwright/cli
+agent-browser install
+```
+
+Para vídeo/motion, instale apenas quando necessário:
+
+```powershell
+npx -y skills@latest add heygen-com/hyperframes -a claude-code -a codex -g --copy -y
+```
+
+## 5. Instalar web, integrações e segurança opcional
+
+```powershell
+npx -y skills@latest add firecrawl/firecrawl `
+  --skill firecrawl-build `
+  --skill firecrawl-build-interact `
+  --skill firecrawl-build-onboarding `
+  --skill firecrawl-build-scrape `
+  --skill firecrawl-build-search `
+  -a claude-code -a codex -g --copy -y
+
+npx -y skills@latest add composiohq/skills --skill composio -a claude-code -a codex -g --copy -y
+npx -y skills@latest add usestrix/strix --all -a claude-code -a codex -g --copy -y
+```
+
+Strix é pentest ativo: só rode contra aplicações próprias ou com autorização escrita. Não instale o monorepo AGPL do Firecrawl dentro deste catálogo MIT; use as skills e o MCP oficial.
+
+## 6. Reduzir saída e consumo de contexto
+
+RTK reduz ruído de terminal antes do modelo receber a saída. A redução de texto não garante redução de cobrança: meça qualidade, chamadas e retrabalho.
+
+```powershell
+winget install --id rtk-ai.rtk -e --accept-source-agreements --accept-package-agreements
+```
+
+Feche e abra o terminal, então:
+
+```powershell
+rtk init -g
+rtk init -g --codex
+rtk gain
+```
+
+Se `rtk` não for encontrado, abra uma nova janela do PowerShell para atualizar o `PATH`.
+
+## 7. MCPs oficiais
+
+Skills e MCPs são camadas diferentes. Skills ensinam o agente; MCPs dão acesso a ferramentas e dados externos.
+
+### Codex e Claude: documentação OpenAI
+
+```powershell
+codex mcp add openaiDeveloperDocs --url https://developers.openai.com/mcp
+claude mcp add --transport http --scope user openaiDeveloperDocs https://developers.openai.com/mcp
+```
+
+### Endpoints do stack
+
+| Serviço | Endpoint/ferramenta | Credencial |
+|---|---|---|
+| Playwright | `npx @playwright/mcp@latest` | navegador local |
+| Firecrawl | `https://mcp.firecrawl.dev/v2/mcp-oauth` | OAuth/API key |
+| PostHog | `https://mcp.posthog.com/mcp?mode=cli` | API key/projeto |
+| Composio | `https://connect.composio.dev/mcp` | conexão OAuth |
+| Context7 | MCP oficial do upstream | conforme o fornecedor |
+| 21st.dev | MCP/CLI oficial | API key |
+
+O formato exato do comando MCP pode variar conforme a versão do cliente. Consulte `codex mcp --help` ou `claude mcp --help` antes de registrar servidores adicionais. O manifesto sem segredos está em [`manifests/stack.json`](../../manifests/stack.json).
+
+## 8. Verificar a instalação
+
+```powershell
+npx -y skills@latest list
+Get-ChildItem "$HOME\.agents\skills" | Select-Object Name
+Get-ChildItem "$HOME\.claude\skills" | Select-Object Name
+codex mcp list
+claude mcp list
+```
+
+Depois reinicie Claude Code e Codex. Em uma conversa nova, peça primeiro planejamento; para duas tarefas independentes, peça divisão em agentes/worktrees; ao final, peça testes, revisão e verificação.
+
+## 9. Instalar o perfil completo deste repo
+
+O manifesto lista tudo, inclusive itens experimentais. Para revisar os comandos sem executá-los:
+
+```powershell
+pwsh ./scripts/verify-manifest.ps1
+pwsh ./scripts/install-profile.ps1 -Profile unified -WhatIf
+```
+
+O script é deliberadamente um gerador de comandos: ele não instala código remoto automaticamente. Revise cada item antes de executar. `find-skills` permanece pendente porque o upstream atual falha na validação YAML; `ai-skills-24` é opt-in por incluir integrações externas e permissões amplas.
+
+## Diagnóstico rápido
+
+- Skill aparece no Codex, mas não no Claude: repita com `-a claude-code -a codex -g --copy` e confirme os dois diretórios.
+- MCP não conecta: confira endpoint, credencial, `codex mcp list`/`claude mcp list` e reinicie o cliente.
+- Terminal não mostra `rtk`: abra um novo PowerShell após o `winget`.
+- Browser não abre: execute `agent-browser install` e confirme que o Playwright tem seus browsers instalados.
+- Paralelização conflita: separe worktrees e mantenha arquivos compartilhados para a etapa sequencial de integração.

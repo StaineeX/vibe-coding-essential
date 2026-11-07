@@ -28,6 +28,7 @@ Coding agents need method, compact context, current documentation, and real veri
 | `observability` | Analytics, flags, experiments, and skills via PostHog MCP |
 | `security` | Skill auditing and authorized Strix pentesting |
 | `experimental` | Token Optimizer, GStack, and ECC; review first |
+| `unified` | Full routing; skills loaded on demand |
 
 ## Install
 
@@ -57,6 +58,8 @@ Use `orchestration` when tasks are independent. Give each agent an isolated scop
 - Strix performs active pentesting: use only on assets you own or have written authorization to test.
 
 The four new repositories are referenced in the manifest; their monorepos are not copied into this catalog to avoid duplication, bloat, and license conflicts.
+
+See the integrated flow in [docs/en/unified-stack.md](docs/en/unified-stack.md) and the rules loaded by Claude/Codex in `AGENTS.md` and `CLAUDE.md`.
 
 Fewer output tokens do not guarantee lower total cost. Measure quality, extra calls, and rework.
 

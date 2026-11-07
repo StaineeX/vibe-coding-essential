@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "name": "vibe-coding-essential-unified-stack",
+  "agents": ["claude-code", "codex"],
+  "routing": {
+    "plan": ["planning-with-files", "writing-plans"],
+    "parallel": ["dispatching-parallel-agents", "cavecrew", "using-git-worktrees"],
+    "frontend": ["21st-ui-build", "ui-ux-pro-max", "design-taste-frontend", "vercel-react-best-practices"],
+    "browser": ["playwright", "agent-browser", "browser-testing-with-devtools"],
+    "web": ["firecrawl", "context7"],
+    "observability": ["posthog"],
+    "external-apps": ["composio"],
+    "quality": ["tdd", "testing-best-practices", "code-review-and-quality", "verification-before-completion"],
+    "security": ["agent-security-checkup", "skill-supply-chain-audit", "strix"]
+  },
+  "mcpExamples": {
+    "playwright": {"command": "npx", "args": ["@playwright/mcp@latest"]},
+    "firecrawl": {"type": "http", "url": "https://mcp.firecrawl.dev/v2/mcp-oauth"},
+    "posthog": {"type": "http", "url": "https://mcp.posthog.com/mcp?mode=cli"},
+    "composio": {"type": "http", "url": "https://connect.composio.dev/mcp"}
+  },
+  "policy": {
+    "parallelOnlyForIndependentTasks": true,
+    "sharedFilesSequential": true,
+    "externalActionsRequireApproval": true,
+    "experimentalOptIn": true
+  }
+}

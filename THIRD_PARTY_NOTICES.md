@@ -30,6 +30,12 @@ This repository is a catalog and installer guide. It does not relicense or vendo
 | Token Optimizer | https://github.com/alexgreensh/token-optimizer | See upstream |
 | GStack | https://github.com/garrytan/gstack | See upstream |
 | ECC | https://github.com/affaan-m/ECC | MIT |
+| Impeccable | https://github.com/pbakaus/impeccable | Apache-2.0; hooks, Live mode, and telemetry are opt-in in this catalog |
+| Jakub Krehel state-machine | https://github.com/jakubkrehel/skills | MIT; only the explicit state-machine skill is selected |
+| Hallmark | https://github.com/Nutlope/hallmark | MIT code; referenced photo assets may have separate attribution terms |
+| Claude-Mem | https://github.com/thedotmack/claude-mem | Apache-2.0; referenced only, not installed |
+| T3 Code | https://github.com/pingdotgg/t3code | MIT; referenced only, not installed |
+| OpenBot | https://github.com/nightly-labs/openbot | PolyForm-Noncommercial-1.0.0 at the reviewed revision; referenced only, not installed |
 
 Always read the current upstream license before redistributing files or binaries.
 

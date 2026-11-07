@@ -1,6 +1,6 @@
 # Vibe Coding Essential
 
-![Vibe Coding Essential cover](assets/vibe-coding-essential-cover.png)
+![Logo Vibe Coding Essential](assets/vibe-coding-essential-logo.png)
 
 Curadoria bilíngue de skills, ferramentas e guardrails para Claude Code e OpenAI Codex.
 
@@ -28,6 +28,7 @@ Um agente de código precisa de método, contexto curto, documentação atual e 
 | `observability` | Analytics, flags, experimentos e skills via PostHog MCP |
 | `security` | Auditoria de skills e pentest autorizado com Strix |
 | `experimental` | Token Optimizer, GStack e ECC; revisar antes |
+| `optional` | Hallmark, Claude-Mem, T3 Code e OpenBot; avaliar antes |
 | `unified` | Roteamento completo; skills carregadas sob demanda |
 
 ## Instalação
@@ -69,7 +70,23 @@ Use `orchestration` quando houver tarefas independentes. Cada agente recebe esco
 - PostHog e Composio exigem credenciais próprias e podem acessar dados/serviços externos.
 - Strix executa pentest ativo: use somente em alvos próprios ou autorizados por escrito.
 
-Os quatro repositórios novos ficam referenciados no manifesto; seus monorepos não são copiados para este catálogo para evitar duplicação, bloat e conflitos de licença.
+### Novos candidatos filtrados
+
+Os seis repositórios solicitados foram comparados com o catálogo e com as rotas existentes. A seleção instalada globalmente foi deliberadamente pequena:
+
+- **Impeccable:** instalado para Claude Code e Codex como auditoria visual opcional; hooks, Live e telemetria ficam desligados por padrão.
+- **Jakub Krehel `state-machine`:** instalado para Claude Code e Codex, somente por invocação explícita, para exercitar estados reais de componentes.
+- **Hallmark:** não instalado porque se sobrepõe à rota de UI atual e ao Impeccable; fica como alternativa temática.
+- **Claude-Mem:** não instalado porque altera retenção, hooks, worker e fluxo de dados de memória persistente.
+- **T3 Code/OpenBot:** não instalados porque são aplicativos de controle de agentes, não skills; OpenBot ainda tem licença não comercial na revisão avaliada.
+
+O relatório auditável, com revisões fixadas, licenças, riscos e fontes primárias está em [docs/research/2026-11-07-candidate-skills.md](docs/research/2026-11-07-candidate-skills.md).
+
+Os monorepos não são copiados para este catálogo: isso evita duplicação, bloat, permissões inesperadas e conflitos de licença.
+
+### Como eles trabalham juntos
+
+O fluxo unificado mantém uma única rota por responsabilidade: planejar → dividir tarefas independentes → implementar UI → auditar com Impeccable → exercitar estados com `state-machine` → verificar com Playwright → revisar segurança e qualidade. Não carregue duas skills gerais de design na mesma etapa; use Hallmark somente quando o projeto pedir seus temas.
 
 Para entender o que foi instalado, qual agente atende cada etapa e como os componentes trabalham juntos, consulte [docs/pt-br/unified-stack.md](docs/pt-br/unified-stack.md) e [manifests/stack.json](manifests/stack.json).
 

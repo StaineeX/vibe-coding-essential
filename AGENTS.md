@@ -11,10 +11,13 @@ Use the installed skills as one routed stack for Claude Code and OpenAI Codex.
 5. Keep dependent tasks sequential. Integrate only after every worker reports.
 6. Use one domain route at a time when routes overlap:
    - UI: `21st-ui-*` → `ui-ux-pro-max` → `design-taste-frontend` → Vercel review.
+   - UI audit: invoke `impeccable` after implementation; it is an audit layer, not a second general design generator.
+   - UI states: invoke `state-machine` explicitly, then verify its temporary bench with Playwright; never ship the bench.
    - Browser: Playwright MCP/CLI for structured testing; `agent-browser` for general browser automation.
    - Web data: Firecrawl for search/scrape/crawl; Context7 for current library docs.
    - Product telemetry: PostHog MCP for analytics, flags, experiments, replay, and errors.
    - External apps: Composio only after explicit authentication and action approval.
+   - Persistent memory/platforms: Claude-Mem, T3 Code, and OpenBot are opt-in references, not automatic dependencies. Decide retention, provider, host permissions, and license first.
 7. Use `tdd`/`testing-best-practices` while implementing, then `code-review-and-quality` and security review.
 8. Finish with `verification-before-completion`; report evidence, not guesses.
 

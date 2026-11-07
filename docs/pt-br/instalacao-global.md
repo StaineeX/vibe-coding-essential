@@ -64,6 +64,8 @@ npx -y skills@latest add vercel-labs/agent-skills -a claude-code -a codex -g --c
 npx -y skills@latest add nextlevelbuilder/ui-ux-pro-max-skill -a claude-code -a codex -g --copy -y
 npx -y skills@latest add Leonxlnx/taste-skill --skill design-taste-frontend -a claude-code -a codex -g --copy -y
 npx -y skills@latest add 21st-dev/skill --all -a claude-code -a codex -g --copy -y
+npx -y skills@latest add pbakaus/impeccable --skill impeccable -a claude-code -a codex -g --copy -y
+npx -y skills@latest add jakubkrehel/skills --skill state-machine -a claude-code -a codex -g --copy -y
 npx -y skills@latest add vercel-labs/agent-browser -a claude-code -a codex -g --copy -y
 npm install --global agent-browser @playwright/cli
 agent-browser install
@@ -74,6 +76,10 @@ Para vídeo/motion, instale apenas quando necessário:
 ```powershell
 npx -y skills@latest add heygen-com/hyperframes -a claude-code -a codex -g --copy -y
 ```
+
+Impeccable e `state-machine` foram instalados globalmente nesta máquina. O catálogo usa Impeccable apenas na rota `frontend-audit` e `state-machine` apenas na rota `frontend-states`; não carregue ambos como substitutos de toda a camada de UI.
+
+Não instale Hallmark junto com Impeccable por padrão. Claude-Mem, T3 Code e OpenBot estão documentados como opções, mas exigem uma decisão separada sobre memória persistente, permissões do host e licença.
 
 ## 5. Instalar web, integrações e segurança opcional
 

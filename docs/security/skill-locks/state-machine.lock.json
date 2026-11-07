@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "tool": "audit_skill",
+  "tool_version": "0.2.2",
+  "generated_at": "2026-11-07T22:44:54Z",
+  "root": "state-machine",
+  "git_commit": null,
+  "tree_sha256": "ca26f5d45573039418b4c7881455f44e3a611a007bfb759ae6c1e861caa72a4b",
+  "skills": {
+    ".": "ca26f5d45573039418b4c7881455f44e3a611a007bfb759ae6c1e861caa72a4b"
+  },
+  "files": {
+    "SKILL.md": "a94d55cf0a6b71bb8e374e66da9fd66fc8095141e7ff9859ab7c23e6f704f5cf",
+    "agents/openai.yaml": "46f496a379f86d7ecd91912505b7545abd462fcaaec6529d7fe39e88ae7535ff",
+    "switcher.md": "d6603f2512bc544f86c2d585399791d7f0e6dde50c6b32ad795d899df55a4377"
+  }
+}

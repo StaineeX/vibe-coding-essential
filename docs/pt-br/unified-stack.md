@@ -9,6 +9,7 @@
 | Planejamento | definir escopo, riscos e critérios | Planning with Files, Writing Plans |
 | Paralelismo | dividir tarefas independentes | Superpowers, Cavecrew, worktrees |
 | Execução | implementar no domínio certo | frontend, browser, web, media, apps |
+| UI auditável | encontrar padrões visuais e exercitar estados reais | Impeccable, `state-machine`, Playwright |
 | Contexto | reduzir exploração e desatualização | Graphify, Context7, RTK |
 | Qualidade | testar, revisar e integrar | TDD, Testing Best Practices, Code Review |
 | Segurança | auditar skills e aplicações | Agent Security Skills, Strix |
@@ -34,7 +35,9 @@
 
 ## Roteamento por tarefa
 
-- **UI:** 21st.dev, UI/UX Pro Max, Design Taste e Vercel.
+- **UI:** 21st.dev → UI/UX Pro Max → Design Taste → Vercel; mantenha essa criação sequencial.
+- **Auditoria visual:** Impeccable, invocado somente quando a interface estiver pronta; hooks, Live e telemetria continuam opt-in.
+- **Estados de interface:** `state-machine`, invocação explícita, cria uma bancada temporária; Playwright verifica o resultado e a bancada não entra no deploy.
 - **Navegador:** Playwright para testes estruturados; agent-browser para automação geral.
 - **Web:** Firecrawl para busca/scraping; Context7 para documentação atual.
 - **Produto:** PostHog para analytics, flags, experimentos e replay; Composio para apps externos autenticados.
@@ -42,6 +45,20 @@
 - **Qualidade:** TDD, testes, revisão e verificação.
 - **Segurança:** auditoria de skills e Strix somente em alvos autorizados.
 - **Descoberta:** Find Skills quando a habilidade exata ainda não estiver no catálogo; o upstream atual precisa de correção YAML antes da instalação.
+
+### Encadeamento recomendado
+
+```text
+planning-with-files
+  → dispatching-parallel-agents / cavecrew (somente tarefas independentes)
+  → rota de implementação
+  → impeccable (auditoria visual opcional)
+  → state-machine + Playwright (estados e interação)
+  → testing-best-practices / code-review-and-quality
+  → verification-before-completion
+```
+
+Claude-Mem, T3 Code e OpenBot ficam fora do encadeamento automático. O primeiro exige uma decisão de retenção e provedor; os dois últimos são plataformas de execução e não substituem o roteamento das skills.
 
 ## Como ativar
 

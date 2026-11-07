@@ -6,12 +6,16 @@
     "plan": ["planning-with-files", "writing-plans"],
     "parallel": ["dispatching-parallel-agents", "cavecrew", "using-git-worktrees"],
     "frontend": ["21st-ui-build", "ui-ux-pro-max", "design-taste-frontend", "vercel-react-best-practices"],
+    "frontend-audit": ["impeccable"],
+    "frontend-states": ["state-machine", "playwright"],
     "browser": ["playwright", "agent-browser", "browser-testing-with-devtools"],
     "web": ["firecrawl", "context7"],
     "observability": ["posthog"],
     "external-apps": ["composio"],
     "quality": ["tdd", "testing-best-practices", "code-review-and-quality", "verification-before-completion"],
-    "security": ["agent-security-checkup", "skill-supply-chain-audit", "strix"]
+    "security": ["agent-security-checkup", "skill-supply-chain-audit", "strix"],
+    "optional-platforms": ["t3code", "openbot"],
+    "optional-memory": ["claude-mem"]
   },
   "mcpExamples": {
     "playwright": {"command": "npx", "args": ["@playwright/mcp@latest"]},
@@ -23,6 +27,9 @@
     "parallelOnlyForIndependentTasks": true,
     "sharedFilesSequential": true,
     "externalActionsRequireApproval": true,
-    "experimentalOptIn": true
+    "experimentalOptIn": true,
+    "optionalMemoryRequiresRetentionDecision": true,
+    "designSkillsAreSequential": true,
+    "platformsAreNotSkills": true
   }
 }

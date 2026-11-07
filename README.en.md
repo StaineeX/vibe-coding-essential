@@ -1,6 +1,6 @@
 # Vibe Coding Essential
 
-![Vibe Coding Essential cover](assets/vibe-coding-essential-cover.png)
+![Vibe Coding Essential logo](assets/vibe-coding-essential-logo.png)
 
 Bilingual curation of skills, tools, and guardrails for Claude Code and OpenAI Codex.
 
@@ -28,6 +28,7 @@ Coding agents need method, compact context, current documentation, and real veri
 | `observability` | Analytics, flags, experiments, and skills via PostHog MCP |
 | `security` | Skill auditing and authorized Strix pentesting |
 | `experimental` | Token Optimizer, GStack, and ECC; review first |
+| `optional` | Hallmark, Claude-Mem, T3 Code, and OpenBot; evaluate first |
 | `unified` | Full routing; skills loaded on demand |
 
 ## Install
@@ -57,7 +58,9 @@ Use `orchestration` when tasks are independent. Give each agent an isolated scop
 - PostHog and Composio require their own credentials and may access external data/services.
 - Strix performs active pentesting: use only on assets you own or have written authorization to test.
 
-The four new repositories are referenced in the manifest; their monorepos are not copied into this catalog to avoid duplication, bloat, and license conflicts.
+The six requested repositories were compared against the existing catalog and routes. Only two focused additions are installed globally for both agents: Impeccable as an opt-in visual audit skill, and Jakub Krehel's explicit `state-machine` skill. Hallmark remains an alternative because it overlaps the existing UI route; Claude-Mem, T3 Code, and OpenBot remain opt-in references because they change persistence or are full agent-workspace applications. See the [auditable research note](docs/research/2026-11-07-candidate-skills.md).
+
+The unified flow is sequential by responsibility: plan → split independent work → build UI → audit with Impeccable → exercise real states with `state-machine` → verify with Playwright → review quality and security. Do not load competing general design skills in the same step.
 
 See the integrated flow in [docs/en/unified-stack.md](docs/en/unified-stack.md) and the rules loaded by Claude/Codex in `AGENTS.md` and `CLAUDE.md`.
 

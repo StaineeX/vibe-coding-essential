@@ -73,6 +73,10 @@ Os quatro repositórios novos ficam referenciados no manifesto; seus monorepos n
 
 Para entender o que foi instalado, qual agente atende cada etapa e como os componentes trabalham juntos, consulte [docs/pt-br/unified-stack.md](docs/pt-br/unified-stack.md) e [manifests/stack.json](manifests/stack.json).
 
+## Demo local de caixas
+
+Há também uma aplicação segura para testar UI, regras e auditoria de loot boxes sem dinheiro real, contas do eFootball ou serviços externos: [docs/pt-br/lootbox-demo.md](docs/pt-br/lootbox-demo.md). O código fica em `apps/lootbox-demo` e usa apenas Node.js padrão.
+
 Menos tokens de saída não garantem menor custo total. Verifique qualidade, chamadas adicionais e taxa de retrabalho.
 
 ## Verificação

@@ -40,10 +40,12 @@ function request(path, { method = 'GET', body, headers = {}, url = baseUrl } = {
       res.on('end', () => {
         const setCookie = res.headers['set-cookie']?.[0];
         if (setCookie) cookie = setCookie.split(';', 1)[0];
+        const isJson = String(res.headers['content-type'] ?? '').includes('application/json');
         resolve({
           status: res.statusCode,
           headers: res.headers,
-          json: data ? JSON.parse(data) : null,
+          json: isJson && data ? JSON.parse(data) : null,
+          raw: data,
         });
       });
     });
@@ -137,4 +139,16 @@ test('reset de demonstração existe fora de production', async () => {
 
   assert.equal(response.status, 200);
   assert.equal(response.json.balance, 1000);
+});
+
+test('serve interface estática sem script inline', async () => {
+  const page = await request('/');
+  const styles = await request('/styles.css');
+  const app = await request('/app.js');
+
+  assert.equal(page.status, 200);
+  assert.match(page.headers['content-type'], /text\/html/);
+  assert.match(page.raw, /./);
+  assert.equal(styles.status, 200);
+  assert.equal(app.status, 200);
 });

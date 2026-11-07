@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Simulação local de caixas e cartas fictícias de futebol">
+    <title>Caixas de Futebol — Simulação local</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Caixas de Futebol, início">
+          <span class="brand-mark" aria-hidden="true">✦</span>
+          <span>
+            <strong>Caixas de Futebol</strong>
+            <small>laboratório local</small>
+          </span>
+        </a>
+        <div class="demo-badge">SIMULAÇÃO · SEM VALOR</div>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="page-title">
+          <div class="hero-copy">
+            <p class="eyebrow">COLEÇÃO FICTÍCIA / 001</p>
+            <h1 id="page-title">Abra. Descubra.<br><em>Monte seu elenco.</em></h1>
+            <p class="hero-text">Uma experiência de caixas e cartas para testar produto, probabilidades e segurança — sem dinheiro, contas ou serviços externos.</p>
+          </div>
+          <div class="hero-orbit" aria-hidden="true">
+            <div class="orbit-ring ring-one"></div>
+            <div class="orbit-ring ring-two"></div>
+            <div class="hero-ball">✦</div>
+            <span class="orbit-dot dot-one"></span>
+            <span class="orbit-dot dot-two"></span>
+            <span class="orbit-dot dot-three"></span>
+          </div>
+        </section>
+
+        <section class="wallet" aria-label="Saldo da sessão">
+          <div>
+            <span class="section-label">SALDO DA SESSÃO</span>
+            <strong id="balance">—</strong>
+            <span class="wallet-unit">créditos virtuais</span>
+          </div>
+          <button id="reset-button" class="button button-ghost" type="button">Reiniciar demo</button>
+        </section>
+
+        <div id="status" class="status" role="status" aria-live="polite">Carregando catálogo...</div>
+
+        <section aria-labelledby="boxes-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">ESCOLHA SUA CAIXA</p>
+              <h2 id="boxes-title">Drops da rodada</h2>
+            </div>
+            <span class="muted">Probabilidades visíveis antes de abrir</span>
+          </div>
+          <div id="boxes" class="box-grid"></div>
+        </section>
+
+        <section class="collection-layout" aria-label="Coleção e histórico">
+          <div>
+            <div class="section-heading compact">
+              <div>
+                <p class="eyebrow">SEU ELENCO</p>
+                <h2>Inventário</h2>
+              </div>
+              <span id="inventory-count" class="count-pill">0 cartas</span>
+            </div>
+            <div id="inventory" class="inventory-grid empty-state">Abra uma caixa para receber sua primeira carta.</div>
+          </div>
+          <aside class="history-panel" aria-labelledby="history-title">
+            <div class="section-heading compact">
+              <div>
+                <p class="eyebrow">AUDITORIA DA SESSÃO</p>
+                <h2 id="history-title">Histórico</h2>
+              </div>
+            </div>
+            <div id="history" class="history-list empty-state">Nenhuma abertura registrada.</div>
+          </aside>
+        </section>
+      </main>
+
+      <footer>
+        <span>Protótipo local para testes de interface e segurança.</span>
+        <span>Sem login · Sem compras · Sem contas reais</span>
+      </footer>
+    </div>
+  </body>
+</html>

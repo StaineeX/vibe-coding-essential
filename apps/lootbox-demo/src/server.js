@@ -153,7 +153,13 @@ export function createServer({ env = process.env.NODE_ENV ?? 'development', rate
 
   return http.createServer(async (request, response) => {
     applySecurityHeaders(response);
-    const url = new URL(request.url ?? '/', `http://${HOST}`);
+    let url;
+    try {
+      url = new URL(request.url ?? '/', `http://${HOST}`);
+    } catch {
+      sendError(response, 400, 'INVALID_URL', 'URL inválida.');
+      return;
+    }
 
     if (url.pathname.startsWith('/api/')) {
       const session = getOrCreateSession(request, response, sessions, secureCookie);
@@ -181,10 +187,13 @@ export function createServer({ env = process.env.NODE_ENV ?? 'development', rate
             sendError(response, 404, 'NOT_FOUND', 'Rota não encontrada.');
             return;
           }
+          const body = await readBody(request);
+          if (body.trim()) {
+            throw Object.assign(new Error('reset body must be empty'), { statusCode: 400, code: 'INVALID_RESET_BODY' });
+          }
           session.balance = STARTING_BALANCE;
           session.inventory = [];
           session.history = [];
-          session.usedRequestIds.clear();
           sendJson(response, 200, publicState(session), { noStore: true });
           return;
         }

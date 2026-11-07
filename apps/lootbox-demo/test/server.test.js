@@ -1,6 +1,7 @@
 import test, { after, before } from 'node:test';
 import assert from 'node:assert/strict';
 import http from 'node:http';
+import net from 'node:net';
 import { createServer } from '../src/server.js';
 
 let server;
@@ -22,11 +23,15 @@ function stop(serverToStop) {
   });
 }
 
-function request(path, { method = 'GET', body, headers = {}, url = baseUrl } = {}) {
+function request(path, { method = 'GET', body, rawBody, rawPath, headers = {}, url = baseUrl } = {}) {
   return new Promise((resolve, reject) => {
-    const target = new URL(path, url);
-    const payload = body === undefined ? undefined : JSON.stringify(body);
-    const req = http.request(target, {
+    const base = new URL(url);
+    const target = rawPath ? null : new URL(path, url);
+    const payload = rawBody ?? (body === undefined ? undefined : JSON.stringify(body));
+    const req = http.request({
+      hostname: base.hostname,
+      port: base.port,
+      path: rawPath ?? `${target.pathname}${target.search}`,
       method,
       headers: {
         ...(payload ? { 'content-type': 'application/json' } : {}),
@@ -52,6 +57,21 @@ function request(path, { method = 'GET', body, headers = {}, url = baseUrl } = {
     req.on('error', reject);
     if (payload) req.write(payload);
     req.end();
+  });
+}
+
+function malformedRequest() {
+  return new Promise((resolve, reject) => {
+    const target = new URL(baseUrl);
+    const socket = net.createConnection(Number(target.port), target.hostname);
+    let data = '';
+    socket.setTimeout(2000);
+    socket.setEncoding('utf8');
+    socket.on('connect', () => socket.write('GET //[ HTTP/1.1\r\nHost: 127.0.0.1\r\nConnection: close\r\n\r\n'));
+    socket.on('data', (chunk) => { data += chunk; });
+    socket.on('end', () => resolve(data));
+    socket.on('timeout', () => { socket.destroy(); reject(new Error('malformed request timed out')); });
+    socket.on('error', reject);
   });
 }
 
@@ -139,6 +159,53 @@ test('reset de demonstração existe fora de production', async () => {
 
   assert.equal(response.status, 200);
   assert.equal(response.json.balance, 1000);
+});
+
+test('URL malformada retorna 400 sem derrubar o servidor', async () => {
+  const malformed = await malformedRequest();
+  const stillAlive = await request('/api/state');
+
+  assert.match(malformed, /400 Bad Request/);
+  assert.match(malformed, /INVALID_URL/);
+  assert.equal(stillAlive.status, 200);
+});
+
+test('reset mantém requestIds consumidos para impedir replay', async () => {
+  await request('/api/dev/reset', { method: 'POST' });
+  const opened = await request('/api/open', {
+    method: 'POST',
+    body: { boxId: 'aurora', requestId: 'request-reset-1' },
+  });
+  await request('/api/dev/reset', { method: 'POST' });
+  const replay = await request('/api/open', {
+    method: 'POST',
+    body: { boxId: 'aurora', requestId: 'request-reset-1' },
+  });
+
+  assert.equal(opened.status, 200);
+  assert.equal(replay.status, 409);
+  assert.equal(replay.json.error.code, 'REQUEST_REPLAY');
+});
+
+test('reset rejeita corpos não vazios e payloads grandes antes de mutar', async () => {
+  await request('/api/dev/reset', { method: 'POST' });
+  const malformed = await request('/api/dev/reset', {
+    method: 'POST',
+    rawBody: '{',
+    headers: { 'content-type': 'application/json' },
+  });
+  const unknownFields = await request('/api/dev/reset', {
+    method: 'POST',
+    body: { unexpected: true },
+  });
+  const oversized = await request('/api/dev/reset', {
+    method: 'POST',
+    rawBody: 'x'.repeat(5000),
+  });
+
+  assert.equal(malformed.status, 400);
+  assert.equal(unknownFields.status, 400);
+  assert.equal(oversized.status, 413);
 });
 
 test('serve interface estática sem script inline', async () => {

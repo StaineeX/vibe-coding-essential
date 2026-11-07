@@ -15,6 +15,7 @@ Um agente de código precisa de método, contexto curto, documentação atual e 
 | Perfil | Foco |
 |---|---|
 | `core` | Superpowers, Ponytail, Caveman, RTK e segurança |
+| `orchestration` | Trabalho paralelo, subagentes, worktrees e revisão de integração |
 | `quality` | TDD, debugging, revisão e testes |
 | `context` | Planejamento persistente, Graphify e Context7 |
 | `integrations` | Pacote multiplataforma de 24/25 skills e integrações opcionais |
@@ -23,6 +24,8 @@ Um agente de código precisa de método, contexto curto, documentação atual e 
 | `browser` | Automação e testes de navegador |
 | `media` | Vídeo e motion com HyperFrames |
 | `discovery` | Encontrar skills sob demanda |
+| `web` | Busca, scraping e interação com páginas via Firecrawl |
+| `observability` | Analytics, flags, experimentos e skills via PostHog MCP |
 | `security` | Auditoria de skills e pentest autorizado com Strix |
 | `experimental` | Token Optimizer, GStack e ECC; revisar antes |
 
@@ -37,6 +40,10 @@ pwsh ./scripts/install-profile.ps1 -Profile core -WhatIf
 
 O script não executa instaladores remotos. Isso mantém a revisão explícita. Skills e hooks de terceiros podem executar comandos com os privilégios do agente; leia [docs/pt-br/security.md](docs/pt-br/security.md) antes de instalar.
 
+### Paralelização
+
+Use `orchestration` quando houver tarefas independentes. Cada agente recebe escopo isolado; tarefas que compartilham arquivos ficam sequenciais. Depois, rode revisão e verificação no conjunto integrado.
+
 ## Economia de tokens
 
 - RTK compacta a saída de comandos shell.
@@ -45,7 +52,11 @@ O script não executa instaladores remotos. Isso mantém a revisão explícita. 
 - Graphify reduz exploração repetida de repositórios grandes.
 - Context7 reduz consultas baseadas em documentação desatualizada.
 - 21st.dev ajuda a buscar e gerar componentes React/shadcn; o MCP exige configuração própria.
+- Playwright oferece MCP/CLI para automação estruturada; Firecrawl adiciona busca e scraping com API/MCP.
+- PostHog e Composio exigem credenciais próprias e podem acessar dados/serviços externos.
 - Strix executa pentest ativo: use somente em alvos próprios ou autorizados por escrito.
+
+Os quatro repositórios novos ficam referenciados no manifesto; seus monorepos não são copiados para este catálogo para evitar duplicação, bloat e conflitos de licença.
 
 Menos tokens de saída não garantem menor custo total. Verifique qualidade, chamadas adicionais e taxa de retrabalho.
 

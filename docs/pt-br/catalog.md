@@ -4,6 +4,8 @@ O catálogo completo, com origem, licença, compatibilidade e comando, está em 
 
 Core: método, simplicidade, economia e segurança.
 
+Orchestration: tarefas independentes em paralelo, subagentes, worktrees e revisão final.
+
 Quality: TDD, diagnóstico, revisão e verificação.
 
 Context: memória de trabalho, mapa do código e documentação atual.

@@ -15,6 +15,7 @@ Coding agents need method, compact context, current documentation, and real veri
 | Profile | Focus |
 |---|---|
 | `core` | Superpowers, Ponytail, Caveman, RTK, and security |
+| `orchestration` | Parallel work, subagents, worktrees, and integration review |
 | `quality` | TDD, debugging, review, and testing |
 | `context` | Persistent planning, Graphify, and Context7 |
 | `integrations` | Cross-platform 24/25-skill pack and optional integrations |
@@ -23,6 +24,8 @@ Coding agents need method, compact context, current documentation, and real veri
 | `browser` | Browser automation and testing |
 | `media` | Video and motion with HyperFrames |
 | `discovery` | Find skills on demand |
+| `web` | Web search, scraping, and page interaction via Firecrawl |
+| `observability` | Analytics, flags, experiments, and skills via PostHog MCP |
 | `security` | Skill auditing and authorized Strix pentesting |
 | `experimental` | Token Optimizer, GStack, and ECC; review first |
 
@@ -37,6 +40,10 @@ pwsh ./scripts/install-profile.ps1 -Profile core -WhatIf
 
 The script does not execute remote installers. This keeps review explicit. Third-party skills and hooks may execute commands with the agent's privileges; read [docs/en/security.md](docs/en/security.md) first.
 
+### Parallel execution
+
+Use `orchestration` when tasks are independent. Give each agent an isolated scope; keep shared-file work sequential. Then review and verify the integrated result.
+
 ## Token efficiency
 
 - RTK compacts shell command output.
@@ -45,7 +52,11 @@ The script does not execute remote installers. This keeps review explicit. Third
 - Graphify reduces repeated repository exploration.
 - Context7 reduces work caused by stale documentation.
 - 21st.dev helps search and generate React/shadcn components; its MCP needs separate setup.
+- Playwright provides structured browser automation through its MCP/CLI; Firecrawl adds web search and scraping via API/MCP.
+- PostHog and Composio require their own credentials and may access external data/services.
 - Strix performs active pentesting: use only on assets you own or have written authorization to test.
+
+The four new repositories are referenced in the manifest; their monorepos are not copied into this catalog to avoid duplication, bloat, and license conflicts.
 
 Fewer output tokens do not guarantee lower total cost. Measure quality, extra calls, and rework.
 

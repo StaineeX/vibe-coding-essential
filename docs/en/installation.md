@@ -11,7 +11,7 @@
 
 ## Suggested profiles
 
-Start with `core` and `quality`. Add `context` for large repositories. Use `frontend`, `browser`, and `media` only when the task needs them.
+Start with `core`, `orchestration`, and `quality`. Add `context` for large repositories. Use `frontend`, `browser`, `web`, `observability`, and `media` only when the task needs them.
 
 The script is a safe preview only; it does not execute remote commands. The `integrations` profile contains skills that may access external services. The `security` profile includes Strix, which performs active pentesting and requires explicit authorization for the target.
 

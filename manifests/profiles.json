@@ -1,13 +1,16 @@
 {
   "core": ["superpowers", "ponytail", "caveman", "rtk", "agent-security-skills"],
+  "orchestration": ["parallel-orchestration", "cavecrew"],
   "quality": ["mattpocock-skills", "testing-best-practices"],
   "context": ["planning-with-files", "graphify", "context7"],
-  "integrations": ["ai-skills-24"],
+  "integrations": ["ai-skills-24", "composio"],
   "engineering": ["addy-agent-skills"],
   "frontend": ["vercel-react-best-practices", "ui-ux-pro-max", "design-taste-frontend", "21st-dev"],
-  "browser": ["agent-browser"],
+  "browser": ["agent-browser", "playwright"],
   "media": ["hyperframes"],
   "discovery": ["find-skills"],
+  "web": ["firecrawl"],
+  "observability": ["posthog"],
   "security": ["agent-security-skills", "strix"],
   "experimental": ["token-optimizer", "gstack", "ecc"]
 }

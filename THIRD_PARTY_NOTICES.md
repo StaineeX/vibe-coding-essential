@@ -12,6 +12,11 @@ This repository is a catalog and installer guide. It does not relicense or vendo
 | Graphify | https://github.com/Graphify-Labs/graphify | Apache-2.0/MIT components |
 | 21st.dev skill | https://github.com/21st-dev/skill | Apache-2.0 |
 | AI Skills pack | https://github.com/sanjay3290/ai-skills | Apache-2.0 |
+| Firecrawl | https://github.com/firecrawl/firecrawl | AGPL-3.0; referenced, not vendored |
+| PostHog | https://github.com/PostHog/posthog | Other; see upstream |
+| Playwright | https://github.com/microsoft/playwright | Apache-2.0 |
+| Composio | https://github.com/ComposioHQ/composio | MIT |
+| Composio skills | https://github.com/composiohq/skills | See upstream |
 | Addy Osmani skills | https://github.com/addyosmani/agent-skills | MIT |
 | UI/UX Pro Max | https://github.com/nextlevelbuilder/ui-ux-pro-max-skill | MIT |
 | Taste Skill | https://github.com/Leonxlnx/taste-skill | MIT |

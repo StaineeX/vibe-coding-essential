@@ -4,6 +4,8 @@ The full catalog, with source, license, compatibility, and command, lives in `ma
 
 Core: method, simplicity, efficiency, and security.
 
+Orchestration: independent tasks in parallel, subagents, worktrees, and final review.
+
 Quality: TDD, diagnosis, review, and verification.
 
 Context: working memory, code maps, and current documentation.

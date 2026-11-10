@@ -161,7 +161,18 @@ pwsh ./scripts/verify-manifest.ps1
 pwsh ./scripts/install-profile.ps1 -Profile unified -WhatIf
 ```
 
-O script é deliberadamente um gerador de comandos: ele não instala código remoto automaticamente. Revise cada item antes de executar. `find-skills` permanece pendente porque o upstream atual falha na validação YAML; `ai-skills-24` é opt-in por incluir integrações externas e permissões amplas.
+O script é deliberadamente um gerador de comandos: ele não instala código remoto automaticamente. Revise cada item antes de executar. `ai-skills-24` é opt-in por incluir integrações externas e permissões amplas.
+
+### Find Skills e Jev
+
+O perfil `discovery` mostra o comando do Find Skills oficial da Vercel. O perfil `optional` inclui Jev via skill `typesafe-ai`. Para instalação global nos dois agentes:
+
+```powershell
+npx skills add vercel-labs/skills --skill find-skills -a claude-code -a codex -g --copy -y
+npx skills add typesafe-ai/skills --skill typesafe-ai -a claude-code -a codex -g --copy -y
+```
+
+Para chamar a API do Jev, configure `TYPESAFE_API_KEY` no ambiente local. Revise o contexto antes de enviá-lo à TypeSafe.
 
 ## Diagnóstico rápido
 

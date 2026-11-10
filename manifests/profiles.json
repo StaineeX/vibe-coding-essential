@@ -13,7 +13,7 @@
   "observability": ["posthog"],
   "security": ["agent-security-skills", "strix"],
   "experimental": ["token-optimizer", "gstack", "ecc"],
-  "optional": ["hallmark", "claude-mem", "t3code", "openbot"],
+  "optional": ["jev", "hallmark", "claude-mem", "t3code", "openbot"],
   "unified": ["superpowers", "parallel-orchestration", "cavecrew", "ponytail", "caveman", "rtk", "agent-security-skills", "mattpocock-skills", "testing-best-practices", "planning-with-files", "graphify", "context7", "ai-skills-24", "composio", "addy-agent-skills", "vercel-react-best-practices", "ui-ux-pro-max", "design-taste-frontend", "21st-dev", "impeccable", "state-machine", "agent-browser", "playwright", "hyperframes", "find-skills", "firecrawl", "posthog", "strix", "token-optimizer", "gstack", "ecc"]
 }
 

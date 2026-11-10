@@ -26,7 +26,8 @@ This repository is a catalog and installer guide. It does not relicense or vendo
 | Security skills | https://github.com/howardhsieh/agent-security-skills | See upstream |
 | Strix | https://github.com/usestrix/strix | Apache-2.0; authorized testing only |
 | Testing best practices | https://github.com/adewale/testing-best-practices | See upstream |
-| Find Skills | https://github.com/fockus/claude-skill-find-skill | See upstream |
+| Find Skills (Vercel) | https://github.com/vercel-labs/skills | MIT |
+| Jev (TypeSafe agent skill) | https://github.com/typesafe-ai/skills | MIT skill; hosted API requires a key |
 | Token Optimizer | https://github.com/alexgreensh/token-optimizer | See upstream |
 | GStack | https://github.com/garrytan/gstack | See upstream |
 | ECC | https://github.com/affaan-m/ECC | MIT |

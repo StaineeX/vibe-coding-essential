@@ -23,13 +23,15 @@ Coding agents need method, compact context, current documentation, and real veri
 | `frontend` | UI/UX, React, 21st.dev, and anti-generic design |
 | `browser` | Browser automation and testing |
 | `media` | Video and motion with HyperFrames |
-| `discovery` | Find skills on demand |
+| `discovery` | Find skills on demand with [Vercel Find Skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills) |
 | `web` | Web search, scraping, and page interaction via Firecrawl |
 | `observability` | Analytics, flags, experiments, and skills via PostHog MCP |
 | `security` | Skill auditing and authorized Strix pentesting |
 | `experimental` | Token Optimizer, GStack, and ECC; review first |
-| `optional` | Hallmark, Claude-Mem, T3 Code, and OpenBot; evaluate first |
+| `optional` | Jev, Hallmark, Claude-Mem, T3 Code, and OpenBot; evaluate first |
 | `unified` | Full routing; skills loaded on demand |
+
+The `optional` profile includes [Jev](https://github.com/typesafe-ai/skills) through the official `typesafe-ai` skill for structured decisions. Calls to the TypeSafe API require `TYPESAFE_API_KEY` and send the supplied context to the service.
 
 ## Install
 

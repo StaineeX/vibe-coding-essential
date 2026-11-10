@@ -23,12 +23,12 @@ Um agente de código precisa de método, contexto curto, documentação atual e 
 | `frontend` | UI/UX, React, 21st.dev e design anti-genérico |
 | `browser` | Automação e testes de navegador |
 | `media` | Vídeo e motion com HyperFrames |
-| `discovery` | Encontrar skills sob demanda |
+| `discovery` | Encontrar skills sob demanda com o [Find Skills da Vercel](https://github.com/vercel-labs/skills/tree/main/skills/find-skills) |
 | `web` | Busca, scraping e interação com páginas via Firecrawl |
 | `observability` | Analytics, flags, experimentos e skills via PostHog MCP |
 | `security` | Auditoria de skills e pentest autorizado com Strix |
 | `experimental` | Token Optimizer, GStack e ECC; revisar antes |
-| `optional` | Hallmark, Claude-Mem, T3 Code e OpenBot; avaliar antes |
+| `optional` | Jev, Hallmark, Claude-Mem, T3 Code e OpenBot; avaliar antes |
 | `unified` | Roteamento completo; skills carregadas sob demanda |
 
 ## Instalação
@@ -41,6 +41,8 @@ pwsh ./scripts/install-profile.ps1 -Profile core -WhatIf
 ```
 
 O script não executa instaladores remotos. Isso mantém a revisão explícita. Skills e hooks de terceiros podem executar comandos com os privilégios do agente; leia [docs/pt-br/security.md](docs/pt-br/security.md) antes de instalar.
+
+O perfil `optional` inclui [Jev](https://github.com/typesafe-ai/skills), via skill oficial `typesafe-ai`, para decisões estruturadas. Chamadas à API da TypeSafe exigem `TYPESAFE_API_KEY` e enviam o contexto fornecido ao serviço.
 
 ### Instalação global para Claude e Codex
 

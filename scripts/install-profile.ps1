@@ -1,6 +1,6 @@
 [CmdletBinding(SupportsShouldProcess)]
 param(
-  [Parameter(Mandatory=$true)] [ValidateSet('core','orchestration','quality','context','integrations','engineering','frontend','browser','media','discovery','web','observability','security','experimental','unified')] [string]$Profile
+  [Parameter(Mandatory=$true)] [ValidateSet('core','orchestration','quality','context','integrations','engineering','frontend','browser','media','discovery','web','observability','security','experimental','optional','unified')] [string]$Profile
 )
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot

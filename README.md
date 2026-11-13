@@ -28,7 +28,7 @@ Um agente de código precisa de método, contexto curto, documentação atual e 
 | `observability` | Analytics, flags, experimentos e skills via PostHog MCP |
 | `security` | Auditoria de skills e pentest autorizado com Strix |
 | `experimental` | Token Optimizer, GStack e ECC; revisar antes |
-| `optional` | Jev, Hallmark, Claude-Mem, T3 Code e OpenBot; avaliar antes |
+| `optional` | Jev, fast-jev-compaction, Hallmark, Claude-Mem, T3 Code e OpenBot; avaliar antes |
 | `unified` | Roteamento completo; skills carregadas sob demanda |
 
 ## Instalação
@@ -43,6 +43,14 @@ pwsh ./scripts/install-profile.ps1 -Profile core -WhatIf
 O script não executa instaladores remotos. Isso mantém a revisão explícita. Skills e hooks de terceiros podem executar comandos com os privilégios do agente; leia [docs/pt-br/security.md](docs/pt-br/security.md) antes de instalar.
 
 O perfil `optional` inclui [Jev](https://github.com/typesafe-ai/skills), via skill oficial `typesafe-ai`, para decisões estruturadas. Chamadas à API da TypeSafe exigem `TYPESAFE_API_KEY` e enviam o contexto fornecido ao serviço.
+
+### Skill universal
+
+O próprio repositório é uma skill (`vibe-coding-essential`) que aplica o fluxo e o roteamento em Claude Code e Codex:
+
+```powershell
+npx -y skills@latest add StaineeX/vibe-coding-essential --skill vibe-coding-essential -a claude-code -a codex -g --copy -y
+```
 
 ### Instalação global para Claude e Codex
 

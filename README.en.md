@@ -28,7 +28,7 @@ Coding agents need method, compact context, current documentation, and real veri
 | `observability` | Analytics, flags, experiments, and skills via PostHog MCP |
 | `security` | Skill auditing and authorized Strix pentesting |
 | `experimental` | Token Optimizer, GStack, and ECC; review first |
-| `optional` | Jev, Hallmark, Claude-Mem, T3 Code, and OpenBot; evaluate first |
+| `optional` | Jev, fast-jev-compaction, Hallmark, Claude-Mem, T3 Code, and OpenBot; evaluate first |
 | `unified` | Full routing; skills loaded on demand |
 
 The `optional` profile includes [Jev](https://github.com/typesafe-ai/skills) through the official `typesafe-ai` skill for structured decisions. Calls to the TypeSafe API require `TYPESAFE_API_KEY` and send the supplied context to the service.
@@ -43,6 +43,14 @@ pwsh ./scripts/install-profile.ps1 -Profile core -WhatIf
 ```
 
 The script does not execute remote installers. This keeps review explicit. Third-party skills and hooks may execute commands with the agent's privileges; read [docs/en/security.md](docs/en/security.md) first.
+
+### Universal skill
+
+The repository is itself a skill (`vibe-coding-essential`) that applies the flow and routing in Claude Code and Codex:
+
+```powershell
+npx -y skills@latest add StaineeX/vibe-coding-essential --skill vibe-coding-essential -a claude-code -a codex -g --copy -y
+```
 
 ### Parallel execution
 

@@ -174,6 +174,25 @@ npx skills add typesafe-ai/skills --skill typesafe-ai -a claude-code -a codex -g
 
 Para chamar a API do Jev, configure `TYPESAFE_API_KEY` no ambiente local. Revise o contexto antes de enviá-lo à TypeSafe.
 
+### Skill universal `vibe-coding-essential`
+
+Este repositório também é uma skill: `skills/vibe-coding-essential/SKILL.md` roteia cada etapa da tarefa para uma skill do catálogo. Instale nos dois agentes:
+
+```powershell
+npx -y skills@latest add StaineeX/vibe-coding-essential --skill vibe-coding-essential -a claude-code -a codex -g --copy -y
+```
+
+### Compactação verbatim (`fast-jev-compaction`)
+
+Plugin do Claude Code (não é skill; Codex não suporta). Substitui o resumo do `/compact` por remoção de chamadas de ferramenta antigas, mantendo o resto palavra por palavra. Requer Claude Code 2.1.274+ e function hooks:
+
+```powershell
+claude plugin marketplace add tamaratran/fast-jev-compaction
+claude plugin install fast-jev-compaction@fast-jev-compaction
+```
+
+Em `~/.claude/settings.json`, adicione `"env": { "CLAUDE_CODE_ENABLE_FUNCTION_HOOKS": "1" }`. Depois configure a chave com `/plugin configure fast-jev-compaction@fast-jev-compaction` ou pela variável `TYPESAFE_API_KEY`. Sem chave, o plugin volta ao resumo padrão. Com chave, a conversa (abreviada) é enviada para `api.typesafe.ai`.
+
 ## Diagnóstico rápido
 
 - Skill aparece no Codex, mas não no Claude: repita com `-a claude-code -a codex -g --copy` e confirme os dois diretórios.

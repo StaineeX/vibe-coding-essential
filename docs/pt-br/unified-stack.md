@@ -44,7 +44,9 @@
 - **Mídia:** HyperFrames para vídeo, motion graphics e legendas via código.
 - **Qualidade:** TDD, testes, revisão e verificação.
 - **Segurança:** auditoria de skills e Strix somente em alvos autorizados.
-- **Descoberta:** Find Skills quando a habilidade exata ainda não estiver no catálogo; o upstream atual precisa de correção YAML antes da instalação.
+- **Descoberta:** Find Skills quando a habilidade exata ainda não estiver no catálogo; usa o Find Skills oficial da Vercel.
+- **Sessões longas (Claude Code):** `fast-jev-compaction` substitui o resumo da compactação; exige `TYPESAFE_API_KEY`.
+- **Roteador:** a skill `vibe-coding-essential` aplica este fluxo em Claude Code e Codex.
 
 ### Encadeamento recomendado
 

@@ -28,7 +28,7 @@ Um agente de código precisa de método, contexto curto, documentação atual e 
 | `observability` | Analytics, flags, experimentos e skills via PostHog MCP |
 | `security` | Auditoria de skills e pentest autorizado com Strix |
 | `experimental` | Token Optimizer, GStack e ECC; revisar antes |
-| `optional` | Jev, fast-jev-compaction, Hallmark, Claude-Mem, T3 Code e OpenBot; avaliar antes |
+| `optional` | Jev, fast-jev-compaction, FreeLLMAPI, Hallmark, Claude-Mem, T3 Code e OpenBot; avaliar antes |
 | `unified` | Roteamento completo; skills carregadas sob demanda |
 
 ## Instalação

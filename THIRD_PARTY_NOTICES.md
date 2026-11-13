@@ -27,6 +27,7 @@ This repository is a catalog and installer guide. It does not relicense or vendo
 | Strix | https://github.com/usestrix/strix | Apache-2.0; authorized testing only |
 | Testing best practices | https://github.com/adewale/testing-best-practices | See upstream |
 | Find Skills (Vercel) | https://github.com/vercel-labs/skills | MIT |
+| FreeLLMAPI | https://github.com/tashfeenahmed/freellmapi | MIT; provider free tiers keep their own terms |
 | fast-jev-compaction | https://github.com/tamaratran/fast-jev-compaction | MIT; hosted API requires a key |
 | Jev (TypeSafe agent skill) | https://github.com/typesafe-ai/skills | MIT skill; hosted API requires a key |
 | Token Optimizer | https://github.com/alexgreensh/token-optimizer | See upstream |

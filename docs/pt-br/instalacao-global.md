@@ -193,6 +193,25 @@ claude plugin install fast-jev-compaction@fast-jev-compaction
 
 Em `~/.claude/settings.json`, adicione `"env": { "CLAUDE_CODE_ENABLE_FUNCTION_HOOKS": "1" }`. Depois configure a chave com `/plugin configure fast-jev-compaction@fast-jev-compaction` ou pela variável `TYPESAFE_API_KEY`. Sem chave, o plugin volta ao resumo padrão. Com chave, a conversa (abreviada) é enviada para `api.typesafe.ai`.
 
+### Modelos gratuitos via FreeLLMAPI
+
+Não é skill: é um proxy local que junta os planos gratuitos de vários provedores em um endpoint compatível com OpenAI e Anthropic, com failover automático. Instalação com Docker:
+
+```powershell
+mkdir $HOMEreellmapi; cd $HOMEreellmapi
+# copie o docker-compose.yml do repositório tashfeenahmed/freellmapi para esta pasta
+$b = New-Object Byte[] 32; [Security.Cryptography.RandomNumberGenerator]::Create().GetBytes($b)
+"ENCRYPTION_KEY=$(-join ($b | % { '{0:x2}' -f $_ }))`nPORT=3001" | Out-File -Encoding utf8 .env
+docker compose up -d
+```
+
+Abra http://localhost:3001, crie a conta local, adicione as chaves dos provedores na página **Keys** e copie a chave unificada.
+
+- Não rode `npx freellmapi setup-claude` sem decidir: ele troca o modelo do Claude Code global pelos modelos gratuitos. Prefira o comando `launch`, que vale só para aquela sessão.
+- A porta fica presa em `127.0.0.1`. Não use `HOST_BIND=0.0.0.0` fora de rede confiável.
+- O perfil `autoupdate` (Watchtower) usa o socket do Docker; fica desligado.
+- Uso pessoal/experimental. Cada provedor mantém os próprios termos de uso.
+
 ## Diagnóstico rápido
 
 - Skill aparece no Codex, mas não no Claude: repita com `-a claude-code -a codex -g --copy` e confirme os dois diretórios.

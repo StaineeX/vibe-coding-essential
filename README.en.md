@@ -28,7 +28,7 @@ Coding agents need method, compact context, current documentation, and real veri
 | `observability` | Analytics, flags, experiments, and skills via PostHog MCP |
 | `security` | Skill auditing and authorized Strix pentesting |
 | `experimental` | Token Optimizer, GStack, and ECC; review first |
-| `optional` | Jev, fast-jev-compaction, Hallmark, Claude-Mem, T3 Code, and OpenBot; evaluate first |
+| `optional` | Jev, fast-jev-compaction, FreeLLMAPI, Hallmark, Claude-Mem, T3 Code, and OpenBot; evaluate first |
 | `unified` | Full routing; skills loaded on demand |
 
 The `optional` profile includes [Jev](https://github.com/typesafe-ai/skills) through the official `typesafe-ai` skill for structured decisions. Calls to the TypeSafe API require `TYPESAFE_API_KEY` and send the supplied context to the service.

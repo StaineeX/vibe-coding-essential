@@ -212,6 +212,33 @@ Abra http://localhost:3001, crie a conta local, adicione as chaves dos provedore
 - O perfil `autoupdate` (Watchtower) usa o socket do Docker; fica desligado.
 - Uso pessoal/experimental. Cada provedor mantém os próprios termos de uso.
 
+#### Cliente recomendado: OpenCode
+
+O OpenCode usa o FreeLLMAPI sem mexer no Claude Code e lê as skills globais de `~/.agents/skills` e `~/.claude/skills`.
+
+```powershell
+npm install -g opencode-ai
+```
+
+Em `~/.config/opencode/opencode.json`:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "freellmapi/auto",
+  "provider": {
+    "freellmapi": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "FreeLLMAPI",
+      "options": { "baseURL": "http://localhost:3001/v1" },
+      "models": { "auto": { "name": "FreeLLMAPI auto (router)" }, "fusion": { "name": "FreeLLMAPI fusion" } }
+    }
+  }
+}
+```
+
+Depois rode `opencode auth login`, escolha **Other**, informe `freellmapi` e cole a chave unificada do dashboard. A chave fica no `auth.json` do OpenCode, fora do repositório. Alternativa: `npx freellmapi setup-opencode --url http://localhost:3001 --api-key <chave>` grava os dois arquivos com o catálogo completo.
+
 ## Diagnóstico rápido
 
 - Skill aparece no Codex, mas não no Claude: repita com `-a claude-code -a codex -g --copy` e confirme os dois diretórios.

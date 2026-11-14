@@ -5,7 +5,7 @@ description: Routes any coding task through the Vibe Coding Essential stack (pla
 
 # Vibe Coding Essential
 
-Universal router for Claude Code and OpenAI Codex. It does not replace other skills. It picks one skill per step and keeps the flow verifiable.
+Universal router for Claude Code, OpenAI Codex and OpenCode. It does not replace other skills. It picks one skill per step and keeps the flow verifiable.
 
 Catalog and sources: https://github.com/StaineeX/vibe-coding-essential
 
@@ -33,6 +33,7 @@ Catalog and sources: https://github.com/StaineeX/vibe-coding-essential
 | Security | `agent-security-checkup`, `skill-supply-chain-audit`; Strix only on authorized targets |
 | Media | HyperFrames |
 | Missing skill | `find-skills` to search skills.sh; review the upstream source before installing |
+| Free models | OpenCode with the local FreeLLMAPI provider (`freellmapi/auto`) |
 | Long sessions (Claude Code) | `fast-jev-compaction` plugin replaces the summary-based compaction; needs `TYPESAFE_API_KEY` |
 
 ## Token economy
